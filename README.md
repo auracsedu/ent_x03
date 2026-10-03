@@ -43,7 +43,7 @@ python -m pytest -k problem_01
 | `전체 테스트`        | `python -m pytest`                                                            |
 | `특정 번호만 테스트` | 문제 번호를 입력받아 `python -m pytest -k problem_번호` 실행                  |
 
-# 문제 목록 (3주차: 직접 만들어 보기, 그리고 재귀)
+# 문제 목록 
 
 각 파일 맨 위의 설명을 읽고, `raise NotImplementedError` 를 지우고 그 자리에
 코드를 작성하세요.
