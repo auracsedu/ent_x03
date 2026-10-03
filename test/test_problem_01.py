@@ -1,21 +1,21 @@
 import pytest
 
-from problem_01 import nth_prime
+from problem_01 import my_split
 
 
 @pytest.mark.parametrize(
-    "n, expected",
+    "s, sep, expected",
     [
-        (1, 2),
-        (2, 3),
-        (3, 5),
-        (5, 11),
-        (6, 13),
-        (10, 29),
-        (100, 541),
-        (1000, 7919),
-        (10000, 104729),
+        ("a,b,c", ",", ["a", "b", "c"]),
+        ("a,,b", ",", ["a", "", "b"]),
+        ("a,", ",", ["a", ""]),
+        (",a", ",", ["", "a"]),
+        (",", ",", ["", ""]),
+        ("abc", ",", ["abc"]),
+        ("", ",", [""]),
+        ("a b c", " ", ["a", "b", "c"]),
+        ("1-2-3-4", "-", ["1", "2", "3", "4"]),
     ],
 )
-def test_nth_prime(n, expected):
-    assert nth_prime(n) == expected
+def test_my_split(s, sep, expected):
+    assert my_split(s, sep) == expected

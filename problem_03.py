@@ -1,39 +1,55 @@
 """
-문제 3. 반올림 직접 만들기
+문제 3. join과 replace 직접 만들기
 
-양수 a와 정수 k를 받아, a를 10**k 자리에서 반올림한 값을 반환하는 함수
-my_round를 작성하세요. 일의 자리가 0번째입니다.
+함수 두 개를 작성하세요. 문제 1(my_split)의 짝이 되는 문제입니다.
 
-- k번째 자리의 숫자가 5 이상이면 올리고, 4 이하면 버립니다.
-- 즉 그 자리 아래가 모두 사라지므로, 결과는 10**(k+1)의 배수가 됩니다.
-- k가 -1 이상이면 결과를 정수(int)로, k가 -2 이하면 실수(float)로 반환합니다.
+(1) my_join(sep, items)
+    문자열 리스트 items의 원소들을 sep으로 이어 붙인 하나의 문자열을
+    돌려줍니다. str.join()은 쓸 수 없습니다.
 
-예시
-    my_round(5, 0)      -> 10      # 일의 자리 5 -> 올림
-    my_round(14, 0)     -> 10      # 일의 자리 4 -> 버림
-    my_round(15, 0)     -> 20      # 일의 자리 5 -> 올림
-    my_round(1234, 1)   -> 1200    # 십의 자리 3 -> 버림
-    my_round(1250, 1)   -> 1300    # 십의 자리 5 -> 올림
-    my_round(2.499, -1) -> 2       # 소수점 첫째 자리 4 -> 버림
-    my_round(2.5, -1)   -> 3       # 소수점 첫째 자리 5 -> 올림
-    my_round(2.449, -2) -> 2.4     # 소수점 둘째 자리 4 -> 버림
-    my_round(2.451, -2) -> 2.5     # 소수점 둘째 자리 5 -> 올림
+    my_join(",", ["a", "b", "c"])  -> "a,b,c"
+    my_join(",", ["a"])            -> "a"
+    my_join(",", [])               -> ""
+    my_join("", ["a", "b"])        -> "ab"
+    my_join("--", ["1", "2", "3"]) -> "1--2--3"
 
-주의
-    파이썬에 내장된 round()는 5를 항상 올리지 않습니다.
-    (round(2.5) == 2, round(1250, -2) == 1200)
-    그래서 이 문제는 round()로 풀 수 없고, 직접 만들어야 합니다.
+    주의: 구분자는 조각 "사이"에만 들어갑니다. 끝에 붙으면 안 됩니다.
+          my_join(",", ["a", "b"]) 가 "a,b," 가 되면 틀립니다.
+
+(2) my_replace(s, old, new)
+    문자열 s에서 old를 모두 찾아 new로 바꾼 새 문자열을 돌려줍니다.
+    str.replace()는 쓸 수 없습니다.
+
+    - old는 빈 문자열이 아닙니다. new는 빈 문자열일 수 있습니다.
+    - 왼쪽부터 찾고, 바꾼 부분은 다시 검사하지 않습니다.
+      ("aaa" 에서 "aa" 를 "b" 로 바꾸면 "ba" 입니다. "b" + 남은 "a")
+    - old가 없으면 s를 그대로 돌려줍니다.
+
+    my_replace("hello", "l", "L")     -> "heLLo"
+    my_replace("hello", "ll", "LL")   -> "heLLo"
+    my_replace("hello", "l", "")      -> "heo"
+    my_replace("aaa", "a", "bb")      -> "bbbbbb"
+    my_replace("aaa", "aa", "b")      -> "ba"
+    my_replace("banana", "an", "AN")  -> "bANANa"
+    my_replace("hello", "z", "x")     -> "hello"
 
 힌트
-    - 지우고 싶은 자리의 개수를 d = k + 1 이라고 둡니다.
-    - "5 이상이면 올림"은 0.5를 더한 뒤 소수점을 버리는 것과 같습니다.
-      int()는 소수점 아래를 버립니다. (a가 양수일 때)
-    - d >= 0 이면 p = 10 ** d 로 나눠서 반올림하고 다시 p를 곱합니다.
-    - d < 0 이면 p = 10 ** (-d) 를 곱해서 반올림하고 다시 p로 나눕니다.
+    - my_join: 첫 조각을 먼저 넣고, 두 번째 조각부터 sep을 앞에 붙여 가며
+      더합니다. 또는 "지금이 첫 조각인가"를 확인하는 방법도 있습니다.
+      items가 비어 있으면 ""입니다.
+    - my_replace: 위치 i를 0부터 움직이면서
+        s[i:i + len(old)] == old 이면  -> 결과에 new를 붙이고 i를 len(old)만큼 건너뜀
+        아니면                          -> 결과에 s[i] 한 글자를 붙이고 i를 1 늘림
+      while 반복문으로 i를 직접 움직이는 것이 for보다 편합니다.
+      (문제 2의 my_find와 비교해 보세요. 같은 "슬라이싱으로 비교하기"입니다.)
 """
 
-from typing import Union
+from typing import List
 
 
-def my_round(a: float, k: int) -> Union[int, float]:
+def my_join(sep: str, items: List[str]) -> str:
+    raise NotImplementedError
+
+
+def my_replace(s: str, old: str, new: str) -> str:
     raise NotImplementedError
