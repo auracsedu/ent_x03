@@ -43,7 +43,7 @@ python -m pytest -k problem_01
 | `전체 테스트`        | `python -m pytest`                                                            |
 | `특정 번호만 테스트` | 문제 번호를 입력받아 `python -m pytest -k problem_번호` 실행                  |
 
-# 문제 목록 
+# 문제 목록
 
 각 파일 맨 위의 설명을 읽고, `raise NotImplementedError` 를 지우고 그 자리에
 코드를 작성하세요.
@@ -58,8 +58,8 @@ python -m pytest -k problem_01
 | `problem_06.py`       | 하노이 탑                                | 재귀로 생각하기   |
 | `problem_07.py`       | 조합 (combinations)                      | 쓴다 / 안 쓴다    |
 | `problem_08.py`       | 순열 (permutations)                      | 첫 자리 고르기    |
-| `problem_09.py`       | 한 줄에서 단어 찾기                      | **백트래킹**      |
-| `problem_extra_01.py` | 보드에서 단어 찾기                       | 백트래킹 (2차원)  |
+| `problem_09.py`       | 한 줄에서 단어 찾기 (재사용 가능)        | **재귀 탐색**     |
+| `problem_extra_01.py` | 보드에서 단어 찾기 (재사용 가능)         | 재귀 탐색 (2차원) |
 | `problem_extra_02.py` | 보드에서 단어 찾기 (재사용 불가)         | 백트래킹 (2차원)  |
 
 숙제는 `python -m pytest -k problem_extra_01` 처럼 테스트합니다.
